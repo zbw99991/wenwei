@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>蝴蝶树艺术摄影</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="bootstrap3/css/bt3.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap3/font-awesome-4.7.0/css/font-awesome.css"/>
+    <!--引入图标文件-->
+    <link rel="shortcut icon" href="images/w1.ico" type="image/x-icon">
+    <!--引入home.css样式文件-->
+    <link rel="stylesheet" type="text/css" href="my_css/home.css">
+    <style>
+        @import url("element/index.css");
+
+        .img_lb {
+            /*设置图片撑满*/
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!--漂浮广告-->
+<div id="imgfloat">
+    <img src="images/icon_off.png"/>
+</div>
+<!--欢迎头-->
+<header id="window-header" class="container">
+    <span class="pull-left">您好！欢迎您来到长沙蝴蝶树摄影！</span>
+    <div class="pull-right">
+        <span><a>关于我们</a></span>
+        <span><a>服务流程</a></span>
+        <span><a>投诉建议</a></span>
+    </div>
+    <br>
+    <img class="pull-left" src="images/title1.jpg" alt="">
+    <img class="pull-right" src="images/title2.jpg" alt="">
+</header>
+<!--导航栏头-->
+<header class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!--品牌图标-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="images/wenwei.png">
+                </a>
+            </div>
+            <!--导航分类列表-->
+            <ul class="nav navbar-nav">
+                <li><a href="">网站首页</a></li>
+                <li><a href="">人气活动</a></li>
+                <li><a href="">作品展示</a></li>
+                <li><a href="">最新外景</a></li>
+                <li><a href="">真实客照</a></li>
+                <li><a href="">新闻与资讯</a></li>
+                <li>
+                    <form action="">
+                        <input type="text" placeholder="Search">
+                        <button type="submit">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+            <!--右侧列表-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="">管理员入口</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!--体-->
+<section class="container-fluid">
+    <div id="app">
+        <el-carousel :interval="3000" type="card" height="500px">
+            <el-carousel-item v-for="item in products">
+                <img :src="item.url" alt="" class="img_lb">
+            </el-carousel-item>
+        </el-carousel>
+    </div>
+</section>
+<article class="container">
+    <!--article分隔栏-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid center-pill">
+            <ul class="nav navbar-nav ">
+                <li><span class="glyphicon glyphicon-earphone"></span><span>客服专线 </span><span>18874155779</span></li>
+                <li><a href=""><img class="img_hd" src="images/hds-wblink.png" alt=""></a></li>
+                <li><a href=""><img class="img_hd" src="images/hds-wxlink.png" alt=""></a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li><span>在线QQ:</span></li>
+                <li><a href=""><img class="img_hf" src="images/hfqqbig.png" alt=""></a></li>
+                <li><span>53客服:</span></li>
+                <li><a href=""><img class="img_hf" src="images/hds-53kf.png" alt=""></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <img class="img-responsive" src="images/hd-title.jpg" alt="">
+    <!--article轮播图+右侧栏-->
+    <div class="row" id="app_son">
+        <div class="col-md-10">
+            <el-carousel height="457px" direction="vertical" :autoplay="false">
+                <el-carousel-item v-for="item in products_son" :key="item">
+                    <img :src="item.url" alt="" class="img_lb">
+                </el-carousel-item>
+            </el-carousel>
+
+        </div>
+        <div class="col-md-2">
+            <ul class="list-group">
+                <li class="list-group-item" v-for="item in products_son">
+                    <a href=""><img :src="item.url" class="img" alt=""></a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <img class="img-responsive" src="images/dujiatiao.jpg" alt="">
+    <!--瀑布流开始-->
+    <div class="grid g1">
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c1.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c2.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c3.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c4.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c5.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c6.jpg" alt="">
+            </a>
+        </div>
+    </div>
+    <!--瀑布流结束-->
+
+    <img class="img-responsive" src="images/wj-title.jpg" alt="">
+
+    <div id="myCarousel2" class="carousel slide">
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="images/d1.jpg" alt="First slide">
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="images/d2.jpg" alt="Second slide">
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="images/d3.jpg" alt="Third slide">
+                <div class="carousel-caption"></div>
+            </div>
+            <div class="item">
+                <img src="images/d4.jpg" alt="Third slide">
+                <div class="carousel-caption"></div>
+            </div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="left carousel-control" href="#myCarousel2" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel2" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div id="si_jia" class="text-center">
+        <span><a href="">夏威夷海岸</a></span>
+        <span><a href="">百万花海</a></span>
+        <span><a href="">城市旅拍</a></span>
+        <span><a href="">环球影城</a></span>
+    </div>
+
+    <img class="img-responsive" src="images/kz-title.jpg" alt="">
+    <!--瀑布流开始-->
+    <div class="grid g2">
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e1.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e2.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e3.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e4.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e5.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e6.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e7.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/e8.jpg" alt="">
+            </a>
+        </div>
+        <!--瀑布流结束-->
+    </div>
+
+    <img class="img-responsive" src="images/dg-xl-title.jpg" alt="">
+
+    <div class="row">
+        <div class="col-md-3">
+            <img class="img-responsive" src="images/f1.jpg" alt="...">
+        </div>
+        <div class="col-md-2">
+            <div id="tg1" class="caption">
+                <h3 style="color: #e107b3">年终感恩特惠2888元</h3>
+                <br>
+                <p>限量88套！秋季新品发售，免费升级！</p>
+                <br>
+                <a href="">
+                    <img id="f2" class="img-responsive center-block" src="images/f2.gif" alt="">
+                </a>
+                <br>
+                <p>已有<span style="color: #e107b3">1314</span>人关注</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3><a href="">长沙蝴蝶树营业执照</a></h3>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="">蝴蝶树婚纱艺术机构创立于1997年8月5日，一直以专注领先创新的经营手法，历经20年</a></li>
+                <li class="list-group-item"><a href="">长沙婚纱摄影这几种创意婚纱照你喜欢哪一种?</a></li>
+                <li class="list-group-item"><a href="">拍婚纱照之前需要做头发和美甲吗？</a></li>
+                <li class="list-group-item"><a href="">长沙婚纱摄影前十名排名是怎么样的？</a></li>
+                <li class="list-group-item"><a href="">长沙婚纱摄影新郎拍婚纱照需要注意的几个事</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h3><a href="">2018株百婚庆珠宝周</a></h3>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="">3倍积分,满千送百!汇聚12大一线珠宝品牌,大牌狂欢,敢买敢爱！</a></li>
+                <li class="list-group-item"><a href="">【婚戒那点事】2399元能买白金对?</a></li>
+                <li class="list-group-item"><a href="">长沙婚纱摄影怎么穿婚纱才显瘦?</a></li>
+                <li class="list-group-item"><a href="">婚期差四月，何时拍婚纱照好一点?</a></li>
+                <li class="list-group-item"><a href="">婚纱摄影胖新娘如何拍出瘦的感觉?</a></li>
+            </ul>
+        </div>
+    </div>
+</article>
+
+<!--尾-->
+<footer id="footer0" class="container">
+    <div class="pull-right">
+        <span><a href="">网站首页</a></span>
+        <span><a href="">人气活动</a></span>
+        <span><a href="">作品展示</a></span>
+        <span><a href="">最新外景</a></span>
+        <span><a href="">真实客照</a></span>
+        <span><a href="">新闻资讯</a></span>
+        <a href=""><img src="images/top.gif" alt=""></a>
+    </div>
+</footer>
+<footer id="footer1" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <p>WORK TIME(周一至周日)</p>
+                    <a href=""><img class="img_hf_f" src="images/hfqqbig.png" alt=""></a>
+                    <a href=""><img class="img_hf_f" src="images/hds-53kf.png" alt=""></a>
+                    <p>AM:9:00-PM22:00(全年无休)</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <h3>蝴蝶树爱情艺术中心</h3>
+                    <h1>18874155779</h1>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <span>www.</span><span style="font-size: 30px">chinahds</span><span>.com</span>
+                    <p>体验店：芙蓉中路二段1号(原湖南商厦)</p>
+                    <p>爱情梦想城：长沙市三一大道485号长沙世界之窗旁</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<footer id="footer2">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="images/wenwei.png">
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav pull-left">
+                <li><a href=""><span style="font-size: 13px">2020夏季婚照拍摄攻略</span></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+                <li><a href=""><span class="fa fa-phone">18874155779</span></a></li>
+                <li><a href=""><span class="fa fa-map-marker">来店路线</span></a></li>
+                <li><a href=""><span class="fa fa-question-circle">在线咨询</span></a></li>
+                <li><a href=""><span class="fa fa-clock-o">预约档期</span></a></li>
+            </ul>
+
+        </div>
+    </nav>
+</footer>
+
+</body>
+<!--引入bootStrap框架的js文件-->
+<script type="text/javascript" src="bootstrap3/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap3/js/bootstrap.js"></script>
+<script type="text/javascript" src="bootstrap3/js/holder.js"></script>
+<script type="text/javascript" src="bootstrap3/js/html5shiv.min.js"></script>
+<script type="text/javascript" src="bootstrap3/js/css3-mediaqueries.js"></script>
+<script type="text/javascript" src="bootstrap3/js/respond.min.js"></script>
+<!--引入和瀑布流相关的js文件-->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
+<!--引入vue-->
+<script type="text/javascript" src="js/vue.js"></script>
+<!--引入home.js-->
+<script type="text/javascript" src="my_js/home.js"></script>
+<!--引入vue index.js-->
+<script type="text/javascript" src="element/index.js"></script>
+
+<script>
+    let v = new Vue({
+        el: "#app",
+        data: {
+            products: [
+                {url: "images/b1.jpg"},
+                {url: "images/b2.jpg"},
+                {url: "images/b3.jpg"},
+                {url: "images/b4.jpg"},
+                {url: "images/b5.jpg"},
+                {url: "images/b6.jpg"},
+                {url: "images/b7.jpg"},
+            ]
+        }
+    });
+    let f = new Vue({
+        el: "#app_son",
+        data: {
+            products_son: [
+                {url: "images/b1_1.jpg"},
+                {url: "images/b2_2.jpg"},
+                {url: "images/b3_3.jpg"},
+                {url: "images/b4_4.jpg"},
+            ]
+        }
+    });
+</script>
+</html>
