@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录/注册</title>
+    <link rel="stylesheet" href="my_css/style.css">
+    <!--引入图标文件-->
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <style>
+        p {
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="cotn_principal">
+    <div class="cont_centrar">
+        <div class="cont_login">
+            <div class="cont_info_log_sign_up">
+                <div class="col_md_login">
+                    <div class="cont_ba_opcitiy">
+                        <h2>登录</h2>
+                        <p>做明星新娘,拍电影婚照</p>
+                        <button class="btn_login" onClick="cambiar_login()">登录</button>
+                    </div>
+                </div>
+                <div class="col_md_sign_up">
+                    <div class="cont_ba_opcitiy">
+                        <h2>注册</h2>
+                        <p>做明星新娘,拍电影婚照</p>
+                        <button class="btn_sign_up" onClick="cambiar_sign_up()">注册</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cont_back_info">
+                <div class="cont_img_back_grey"><img src="images/f1.jpg" alt=""/></div>
+            </div>
+            <div class="cont_forms">
+                <div class="cont_img_back_"><img src="images/f1.jpg" alt=""/></div>
+                <!--登录表单-->
+                <form action="login" method="post" autocomplete="off">
+                    <div class="cont_form_login"><a href="#" onClick="ocultar_login_sign_up()"><i
+                            class="material-icons"></i>返回</a>
+                        <h2>登录</h2>
+                        <input th:value="${username}" type="text" name="username" placeholder="请输入用户名"/>
+                        <input th:value="${password}" type="password" name="password" placeholder="请输入密码"/>
+                        <br>
+                        <br>
+                        <label class="pull-left"> <input type="checkbox" name="rem">记住我</label>
+                        <br>
+                        <button class="btn_login" type="submit">登录</button>
+                    </div>
+                </form>
+                <!--注册表单-->
+                <div class="cont_form_sign_up"><a href="#" onClick="ocultar_login_sign_up()"><i
+                        class="material-icons"></i>返回</a>
+                    <h2>注册</h2>
+                    <input id="username" type="text" name="username" placeholder="请输入用户名" autocomplete="off">
+                    <p id="s_name"></p>
+                    <input id="password" type="password" name="password" placeholder="请输入密码"/>
+                    <p id="s_pwd"></p>
+                    <input id="confirm" type="password" placeholder="确认密码"/>
+                    <p id="s_con"></p>
+                    <button class="btn_sign_up" type="submit">注册</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--引入jquery-->
+<script type="text/javascript" src="bootstrap3/jquery.min.js"></script>
+<!--引入vue-->
+<script type="text/javascript" src="js/vue.js"></script>
+<script src="my_js/index.js"></script>
+
+<script>
+    let username_flag = false;
+    let password_flag = false;
+    let confirm_flag = false;
+    $("#username").blur(function () {
+        if ($(this).val().trim() == "") {
+            $("#s_name").text("×用户名不能为空").css("color", "red");
+        } else {
+            $.ajax({
+                type: "get",
+                url: "check",
+                data: "username=" + $(this).val(),
+                success: function (flag) {
+                    if (flag == "true") {
+                        $("#s_name").text("×用户名已经被使用").css("color", "red");
+                        username_flag = false;
+                    } else {
+                        $("#s_name").text("√用户名可以使用").css("color", "green");
+                        username_flag = true;
+                    }
+                }
+            });
+        }
+    });
+    $("#password").blur(function () {
+        if ($(this).val().trim() == "") {
+            $("#s_pwd").text("×密码不能为空").css("color", "red");
+            password_flag = false;
+        } else {
+            $("#s_pwd").text("");
+            password_flag = true;
+        }
+    });
+    $("#confirm").blur(function () {
+        let a = $("#password").val();
+        let b = $("#confirm").val();
+        if (b != a) {
+            $("#s_con").text("×两次密码输入不一致!").css("color", "red");
+            confirm_flag = false;
+        } else {
+            $("#s_con").text("");
+            confirm_flag = true;
+        }
+    });
+    $(".btn_sign_up").click(function () {
+        if (!(username_flag && password_flag && confirm_flag)) {
+            return false;
+        }
+        $.ajax({
+            type: "post",
+            url: "reg",
+            data: "username=" + $("#username").val() + "&password=" + $("#password").val(),
+            success: function (data) {
+                alert(data);
+                $(location).attr('href', 'http://localhost:8080/showlogin');
+            }
+        });
+    });
+</script>
+</body>
+</html>

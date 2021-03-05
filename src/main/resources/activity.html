@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>人气活动</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="bootstrap3/css/bt3.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap3/font-awesome-4.7.0/css/font-awesome.css"/>
+    <!--引入图标文件-->
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <!--引入home.css样式文件-->
+    <link rel="stylesheet" type="text/css" href="my_css/home.css">
+    <!--引入element框架的index.css样式-->
+    <link rel="stylesheet" type="text/css" href="element/index.css">
+    <style>
+        /*轮播组件*/
+        section .carousel-inner .item {
+            height: 230px;
+        }
+
+        section .carousel-indicators li {
+            width: 20px;
+            height: 5px;
+            border: 1px solid transparent;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        section .carousel-indicators .active {
+            width: 20px;
+            height: 5px;
+            border: 1px solid transparent;
+            background-color: #e107b3;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+<!--漂浮广告-->
+<div id="imgfloat">
+    <img src="images/icon_off.png"/>
+</div>
+<!--欢迎头-->
+<header id="window-header" class="container">
+    <span class="pull-left">您好！欢迎您来到长沙蝴蝶树摄影！</span>
+    <div class="pull-right">
+        <span><a>关于我们</a></span>
+        <span><a>服务流程</a></span>
+        <span><a>投诉建议</a></span>
+    </div>
+    <br>
+    <img class="pull-left" src="images/title1.jpg" alt="">
+    <img class="pull-right" src="images/title2.jpg" alt="">
+</header>
+<!--导航栏头-->
+<header class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!--品牌图标-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="images/wenwei.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="home">网站首页</a></li>
+                <li th:each="c:${list}"><a th:href="${c.action}" th:text="${c.name}"></a></li>
+                <li>
+                    <form action="">
+                        <input type="text" placeholder="Search">
+                        <button type="submit">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+            <!--右侧列表-->
+            <ul class="nav navbar-nav navbar-right">
+                <li th:if="${user}==null"><a href="showlogin">登录/注册</a></li>
+                <li th:if="${user}!=null"><a th:text="'欢迎回来,'+${user.username}" style="pointer-events: none;color: yellow"></a></li>
+                <li th:if="${user}!=null"><a href="logout">登出</a></li>
+                <li th:if="${user}!=null"><a href="backstage">管理系统</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!--体-->
+<section class="container">
+    <!--轮播图开始-->
+    <div id="app">
+        <el-carousel :interval="3000" height="230px">
+            <el-carousel-item v-for="item in products" :key="item.id">
+                <img :src="item.url" alt="" class="img_lb">
+            </el-carousel-item>
+        </el-carousel>
+    </div>
+    <!--轮播图结束-->
+    <img src="images/hd-title.jpg" class="img-responsive" alt="">
+</section>
+
+<article class="container">
+    <!--瀑布流开始-->
+    <div class="grid g1">
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c1.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c2.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c3.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c4.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c5.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="">
+                <img class="img-responsive" src="images/c6.jpg" alt="">
+            </a>
+        </div>
+    </div>
+    <!--瀑布流结束-->
+
+    <!--分页-->
+    <nav aria-label="Page navigation" class="text-center">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</article>
+
+<!--尾-->
+<footer id="footer0" class="container">
+    <div class="pull-right">
+        <span><a href="">网站首页</a></span>
+        <span><a href="">人气活动</a></span>
+        <span><a href="">作品展示</a></span>
+        <span><a href="">最新外景</a></span>
+        <span><a href="">真实客照</a></span>
+        <span><a href="">新闻资讯</a></span>
+        <a href=""><img src="images/top.gif" alt=""></a>
+    </div>
+</footer>
+<footer id="footer1" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <p>WORK TIME(周一至周日)</p>
+                    <a href=""><img class="img_hf_f" src="images/hfqqbig.png" alt=""></a>
+                    <a href=""><img class="img_hf_f" src="images/hds-53kf.png" alt=""></a>
+                    <p>AM:9:00-PM22:00(全年无休)</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <h3>蝴蝶树爱情艺术中心</h3>
+                    <h1>18874155779</h1>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <span>www.</span><span style="font-size: 30px">chinahds</span><span>.com</span>
+                    <p>体验店：芙蓉中路二段1号(原湖南商厦)</p>
+                    <p>爱情梦想城：长沙市三一大道485号长沙世界之窗旁</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<footer id="footer2">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="images/wenwei.png">
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav pull-left">
+                <li><a href=""><span style="font-size: 13px">2020夏季婚照拍摄攻略</span></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+                <li><a href=""><span class="fa fa-phone">18874155779</span></a></li>
+                <li><a href=""><span class="fa fa-map-marker">来店路线</span></a></li>
+                <li><a href=""><span class="fa fa-question-circle">在线咨询</span></a></li>
+                <li><a href=""><span class="fa fa-clock-o">预约档期</span></a></li>
+            </ul>
+
+        </div>
+    </nav>
+</footer>
+
+
+</body>
+<!--引入bootStrap框架的js文件-->
+<script type="text/javascript" src="bootstrap3/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap3/js/bootstrap.js"></script>
+<script type="text/javascript" src="bootstrap3/js/holder.js"></script>
+<script type="text/javascript" src="bootstrap3/js/html5shiv.min.js"></script>
+<script type="text/javascript" src="bootstrap3/js/css3-mediaqueries.js"></script>
+<script type="text/javascript" src="bootstrap3/js/respond.min.js"></script>
+<!--引入和瀑布流相关的js文件-->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
+<!--引入vue-->
+<script type="text/javascript" src="js/vue.js"></script>
+<!--引入home.js-->
+<script type="text/javascript" src="my_js/home.js"></script>
+<!--引入element index.js-->
+<script type="text/javascript" src="element/index.js"></script>
+<script th:inline="javascript">
+    let v = new Vue({
+        el: "#app",
+        data: {
+            products: [[${bList}]]
+        }
+    });
+     v.$mount('#app');
+</script>
+</html>

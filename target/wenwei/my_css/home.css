@@ -1,0 +1,222 @@
+body{
+    padding-bottom: 53px;
+}
+#window-header {
+    margin-top: 10px;
+}
+
+#window-header a:hover {
+    color: #e107b3;
+}
+
+/*导航条样式*/
+.navbar {
+    background-color: #e107b3;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+header .navbar {
+    margin-top: 0;
+}
+
+/*导航条超链接字体颜色*/
+.nav.navbar-nav > li > a {
+    height: 50px;
+    color: white;
+}
+
+/*导航输入框*/
+form > input {
+    padding: 10px 20px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    position: relative;
+    top: 10px;
+    outline: none; /*去掉点击后的边框*/
+}
+
+/*导航图标*/
+.navbar-brand > img {
+    width: 35px;
+    height: 35px;
+    position: relative;
+    bottom: 7px;
+}
+
+/*搜索按钮*/
+form > button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: #e107b3;
+    position: relative;
+    top: 10px;
+    right: 40px;
+}
+
+/*轮播指标*/
+section .carousel-indicators li {
+    width: 40px;
+    height: 10px;
+    border: 1px solid transparent;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+section .carousel-indicators .active {
+    width: 40px;
+    height: 10px;
+    border: 1px solid transparent;
+    background-color: #e107b3;
+    border-radius: 2px;
+}
+
+/*轮播图 下边距*/
+.carousel slide {
+    margin-bottom: 10px;
+}
+
+/*轮播组件*/
+section .carousel-inner .item {
+    height: 600px;
+}
+
+/*轮播图片*/
+section .carousel-inner .item img {
+    height: 100%;
+    width: 100%;
+}
+
+.img_hd {
+    position: relative;
+    bottom: 3px;
+}
+
+.img_hf {
+    position: relative;
+    bottom: 10px;
+}
+
+article .navbar span {
+    font-size: 23px;
+    color: white;
+    position: relative;
+    top: 10px;
+}
+
+.glyphicon.glyphicon-earphone {
+    position: relative;
+    top: 13px;
+}
+
+/*添加瀑布流相关样式*/
+.grid-item {
+    width: 200px; /*设置每个元素的宽度为200*/
+    margin: 0 10px 10px 0;
+}
+
+/*轮播指标*/
+article .carousel-indicators li {
+    width: 30px;
+    height: 7px;
+    border: 1px solid transparent;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+article .carousel-indicators .active {
+    width: 30px;
+    height: 7px;
+    border: 1px solid transparent;
+    background-color: #e107b3;
+    border-radius: 2px;
+}
+
+.col-md-2 .list-group-item {
+    padding: 0;
+    width: 100%;
+    height: 115px;
+}
+
+.col-md-2 .list-group-item img {
+    height: 100%;
+    width: 100%;
+
+}
+
+.g1 .grid-item {
+    margin-bottom: 10px;
+    height: 540px;
+    width: 370px;
+}
+
+.g1 .grid-item img {
+    width: 100%;
+    height: 100%;
+}
+
+.g2 .grid-item {
+    margin-bottom: 10px;
+    height: 400px;
+    width: 275px;
+}
+
+.g2 .grid-item img {
+    width: 100%;
+    height: 100%;
+}
+
+#si_jia {
+    font-size: 23px;
+}
+
+article a:hover {
+    color: #e107b3;
+    text-decoration: none;
+}
+
+#si_jia a:hover {
+    color: #e107b3;
+}
+
+#tg1 {
+    text-align: center;
+}
+
+#footer0 span {
+    background-color: #f372d9;
+}
+
+#footer0 a {
+    color: white;
+}
+
+#footer0 a:hover {
+    color: #e107b3;
+}
+
+#footer0 img {
+    position: relative;
+    top: 2px;
+}
+
+#footer1 {
+    padding-top: 15px;
+    margin-bottom: -2px;
+    background-color: #e107b3;
+    color: white;
+}
+
+#imgfloat {
+    position: absolute;
+    right: 25px;
+    top: 250px;
+}
+
+#footer2 {
+    font-size: 20px;
+}
+#footer2 nav{
+    margin-bottom: -1px;
+}

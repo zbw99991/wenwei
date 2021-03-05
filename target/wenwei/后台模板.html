@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>蝴蝶树艺术摄影</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="bootstrap3/css/bt3.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap3/font-awesome-4.7.0/css/font-awesome.css"/>
+    <!--引入图标文件-->
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <!--引入home.css样式文件-->
+    <link rel="stylesheet" type="text/css" href="my_css/home.css">
+    <!--引入element框架的index.css样式-->
+    <link rel="stylesheet" type="text/css" href="element/index.css">
+</head>
+<body>
+<!--导航栏头-->
+<header class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!--品牌图标-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="home">
+                    <img alt="Brand" src="images/wenwei.png">
+                </a>
+            </div>
+            <!--导航分类列表-->
+            <ul class="nav navbar-nav">
+                <li><a href="home">网站首页</a></li>
+                <li><a href="#">发布轮播图</a></li>
+                <li><a href="#">发布图片</a></li>
+                <li><a href="#">发布新闻</a></li>
+                <li><a href="#">用户管理</a></li>
+            </ul>
+            <!--右侧列表-->
+            <ul class="nav navbar-nav navbar-right">
+                <li th:if="${user}!=null"><a th:text="'欢迎回来,'+${user.username}" style="pointer-events: none;color: yellow"></a></li>
+                <li th:if="${user}!=null"><a href="logout">登出</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="row">
+        <!--左侧主要内容-->
+        <div class="col-md-offset-2 col-md-8">
+            <!--遍历显示轮播图-->
+            <div  class="text-center">
+                <img  class="img-responsive" alt="">
+                <a  class="btn btn-danger">删除</a>
+            </div>
+
+            <!--添加轮播图-->
+            <hr>
+            <h2 class="page-header text-center">添加轮播图</h2>
+            <form action="addbanner" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file">
+                <button type="submit" class="btn btn-success">上传</button>
+            </form>
+            <hr>
+        </div>
+        <!--左侧内容结束-->
+    </div>
+</div>
+<footer id="footer2">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="images/wenwei.png">
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav pull-left">
+                <li><a href=""><span style="font-size: 13px">2020夏季婚照拍摄攻略</span></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right">
+                <li><a href=""><span class="fa fa-phone">18874155779</span></a></li>
+                <li><a href=""><span class="fa fa-map-marker">来店路线</span></a></li>
+                <li><a href=""><span class="fa fa-question-circle">在线咨询</span></a></li>
+                <li><a href=""><span class="fa fa-clock-o">预约档期</span></a></li>
+            </ul>
+
+        </div>
+    </nav>
+</footer>
+
+</body>
+<!--引入bootStrap框架的js文件-->
+<script type="text/javascript" src="bootstrap3/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap3/js/bootstrap.js"></script>
+<script type="text/javascript" src="bootstrap3/js/holder.js"></script>
+<script type="text/javascript" src="bootstrap3/js/html5shiv.min.js"></script>
+<script type="text/javascript" src="bootstrap3/js/css3-mediaqueries.js"></script>
+<script type="text/javascript" src="bootstrap3/js/respond.min.js"></script>
+<!--引入和瀑布流相关的js文件-->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
+<!--引入vue-->
+<script type="text/javascript" src="js/vue.js"></script>
+<!--引入home.js-->
+<script type="text/javascript" src="my_js/home.js"></script>
+<!--引入vue index.js-->
+<script type="text/javascript" src="element/index.js"></script>
+
+</html>
