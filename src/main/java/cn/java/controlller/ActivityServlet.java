@@ -43,7 +43,6 @@ public class ActivityServlet extends HttpServlet {
         String categoryId=request.getParameter("id");
         PictureDao pictureDao =new PictureDao();
         List<Picture> cList=pictureDao.findByCategoryId(categoryId);
-        System.out.println("cList"+cList);
         context.setVariable("cList",cList);
 
 
