@@ -2,8 +2,10 @@ package cn.java.controlller;
 
 import cn.java.dao.Banner_imgDao;
 import cn.java.dao.CategoryDao;
+import cn.java.dao.PictureDao;
 import cn.java.entity.Banner_img;
 import cn.java.entity.Category;
+import cn.java.entity.Picture;
 import cn.java.entity.User;
 import cn.java.utils.ThUtils;
 import org.thymeleaf.context.Context;
@@ -31,13 +33,19 @@ public class ActivityServlet extends HttpServlet {
         //获取session中的用户信息
         User user= (User) request.getSession().getAttribute("user");
         context.setVariable("user",user);
-        //查询指定类型轮播图
-        Banner_imgDao imgDao=new Banner_imgDao();
         //"副页面"的轮播图
+        Banner_imgDao imgDao=new Banner_imgDao();
         int bannerId=4;
         List<Banner_img> bList=imgDao.findAllByBannerId(bannerId);
         context.setVariable("bList",bList);
-        //查询图片
+
+        //分类查询图片(人气活动.作品展示.最新外景.真实客照)
+        String categoryId=request.getParameter("id");
+        PictureDao pictureDao =new PictureDao();
+        List<Picture> cList=pictureDao.findByCategoryId(categoryId);
+        System.out.println("cList"+cList);
+        context.setVariable("cList",cList);
+
 
         ThUtils.print("activity.html",context,response);
     }

@@ -52,7 +52,8 @@
             <!--导航分类列表-->
             <ul class="nav navbar-nav">
                 <li><a href="home">网站首页</a></li>
-                <li th:each="c:${list}"><a th:href="${c.action}" th:text="${c.name}"></a></li>
+                <li th:each="c:${list}"><a th:href="'activity?id='+${c.id}" th:text="${c.name}"></a></li>
+                <li><a href="news">新闻资讯</a></li>
                 <li>
                     <form action="">
                         <input type="text" placeholder="Search">
@@ -106,9 +107,9 @@
     <!--中号轮播图+右侧栏-->
     <div class="row" id="app_rq">
         <div class="col-md-10">
-            <el-carousel :interval="3000" height="457px" direction="vertical">
-                <el-carousel-item v-for="item in products" :key="item.id">
-                    <img :src="item.url" alt="" >
+            <el-carousel :interval="3000" height="457px" direction="vertical" id="e-car">
+                <el-carousel-item v-for="item in products" :key="item.id" >
+                    <a href=""><img :src="item.url" alt="" ></a>
                 </el-carousel-item>
             </el-carousel>
         </div>
@@ -343,6 +344,7 @@
 <script type="text/javascript" src="element/index.js"></script>
 
 <script th:inline="javascript">
+
     let v = new Vue({
         el: "#app",
         data: {
@@ -353,7 +355,12 @@
     let f = new Vue({
         el: "#app_rq",
         data: {
-            products:[[${cList}]]
+            products:[[${cList}]],
+        },
+        methods:{
+            f1(){
+                return "2";
+            }
         }
     });
     /*f.$mount("#app_rq");*/

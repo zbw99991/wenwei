@@ -14,14 +14,13 @@ public class CategoryDao {
     public List<Category> findAll() {
         List<Category> list=new ArrayList<>();
         try (Connection conn=DBUtils.getConnection()){
-            String sql="select id,name,action from category";
+            String sql="select id,name from category";
             PreparedStatement ps=conn.prepareStatement(sql);
             ResultSet rs= ps.executeQuery();
             while (rs.next()){
                 int id=rs.getInt(1);
                 String name=rs.getString(2);
-                String action=rs.getString(3);
-                list.add(new Category(id,name,action));
+                list.add(new Category(id,name));
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -14,14 +14,22 @@
     <link rel="stylesheet" type="text/css" href="element/index.css">
     <style>
         @import url("//unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css");
+
         .title .el-collapse-item__header {
             height: 25px;
             background-color: #f1dbec;
             font-size: 20px;
             color: #e107b3;
         }
+
         form {
             color: #e107b3;
+        }
+
+        /*添加瀑布流相关样式*/
+        .grid-item {
+            width: 240px; /*设置每个元素的宽度为200*/
+            margin: 0 10px 10px 0;
         }
 
     </style>
@@ -41,7 +49,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="home">网站首页</a></li>
                 <li><a href="backstage">发布轮播图</a></li>
-                <li><a href="#">发布图片</a></li>
+                <li><a href="showsendpicture">发布图片</a></li>
                 <li><a href="#">发布新闻</a></li>
                 <li><a href="#">用户管理</a></li>
             </ul>
@@ -54,42 +62,63 @@
         </div>
     </nav>
 </header>
-<div class="row">
-    <div class="col-md-offset-3 col-md-6">
-        <div class="bs-docs-section">
-            <div id="app">
-                <el-collapse v-model="activeNames" class="title">
-                    <el-collapse-item title="添加图片" name="1">
-                        <form action="sendpicture" method="post"
-                              enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="title">标题</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="请输入作品标题">
-                            </div>
-                            <div class="form-group">
-                                <label for="aabstract">作者姓名</label>
-                                <input type="text" class="form-control" id="aabstract" name="author"
-                                       placeholder="请输入作者姓名">
-                            </div>
-                            <div class="form-group">
-                                <label for="intro">作品简介</label>
-                                <textarea class="form-control" rows="4" id="intro" name="intro">无详细介绍</textarea>
-                            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="bs-docs-section">
+                <div id="app">
+                    <el-collapse v-model="activeNames" class="title">
+                        <el-collapse-item title="添加图片" name="1">
+                            <form action="sendpicture" method="post"
+                                  enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="title">标题</label>
+                                    <input type="text" class="form-control" id="title" name="title"
+                                           placeholder="请输入作品标题">
+                                </div>
+                                <div class="form-group">
+                                    <label for="aabstract">作者姓名</label>
+                                    <input type="text" class="form-control" id="aabstract" name="author"
+                                           placeholder="请输入作者姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label for="intro">作品简介</label>
+                                    <textarea class="form-control" rows="4" id="intro" name="intro">无详细介绍</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>选择图片类型</label>
+                                    <select name="categoryId">
+                                        <option th:each="c :${list}" th:value="${c.id}" th:text="${c.name}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="">选择文件</label> <input type="file" id="file" name="file">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-success">上传</button>
+                                </div>
+                            </form>
+                        </el-collapse-item>
+
+                        <el-collapse-item title="展示图片" name="2">
                             <div class="form-group">
                                 <label>选择图片类型</label>
                                 <select name="categoryId">
+                                    <option value="-1">所有图片</option>
                                     <option th:each="c :${list}" th:value="${c.id}" th:text="${c.name}"></option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label class="">选择文件</label> <input type="file" id="file" name="file">
+
+                            <div class="grid" id="grid">
+                                <div th:each="b:${bList}" class="grid-item">
+                                    <img th:src="${b.url}" class="img-responsive" alt="">
+                                    <a th:href="'deletepicture?id='+${b.id}" class="btn btn-danger"><label
+                                            class="fa fa-trash-o" style="font-size: 20px"></label></a>
+                                </div>
                             </div>
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-success">上传</button>
-                            </div>
-                        </form>
-                    </el-collapse-item>
-                </el-collapse>
+                        </el-collapse-item>
+                    </el-collapse>
+                </div>
             </div>
         </div>
     </div>
@@ -136,10 +165,19 @@
 <!--引入element index.js-->
 <script type="text/javascript" src="element/index.js"></script>
 <script>
+    //瀑布流初始化代码
+    $("#grid").masonry({
+        itemSelector: ".grid-item", //告诉框架 选择器是什么
+        /*columnWidth: 300, //告诉框架 每个元素所占宽度(元素宽度+间距)*/
+    })
+    //图片加载完之后让瀑布流处理一下显示布局
+    $("#grid").imagesLoaded().progress(function () {
+        $("#grid").masonry("layout");//让瀑布流重新计算显示效果  解决图片层叠问题
+    });
     var Main = {
         data() {
             return {
-                activeNames: ["1"]
+                activeNames: ["1","2"]
             };
         },
     }

@@ -1,7 +1,9 @@
 package cn.java.controlller;
 
 import cn.java.dao.CategoryDao;
+import cn.java.dao.PictureDao;
 import cn.java.entity.Category;
+import cn.java.entity.Picture;
 import cn.java.utils.ThUtils;
 import org.thymeleaf.context.Context;
 
@@ -25,6 +27,12 @@ public class ShowSendPictureServlet extends HttpServlet {
         CategoryDao dao= new CategoryDao();
         List<Category> list=dao.findAll();
         context.setVariable("list",list);
+
+        //查询所有图片
+        PictureDao pictureDao=new PictureDao();
+        List<Picture> bList= pictureDao.findAll();
+        context.setVariable("bList",bList);
+
         ThUtils.print("sendpicture.html",context,response);
     }
 }

@@ -20,9 +20,7 @@ import java.util.List;
 @WebServlet(name = "BackstageServlet",urlPatterns = "/backstage")
 public class BackstageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Context context=new Context();
         /*获取session域中的用户*/

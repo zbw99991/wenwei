@@ -34,6 +34,16 @@
             background-color: #e107b3;
             border-radius: 2px;
         }
+        #g1 .grid-item {
+            margin-bottom: 10px;
+            height: 387px;
+            width: 370px;
+        }
+        #g1 img{
+            height: 203px;
+            width: 375px;
+        }
+
     </style>
 </head>
 <body>
@@ -63,9 +73,11 @@
                     <img alt="Brand" src="images/wenwei.png">
                 </a>
             </div>
+            <!--导航分类列表-->
             <ul class="nav navbar-nav">
                 <li><a href="home">网站首页</a></li>
-                <li th:each="c:${list}"><a th:href="${c.action}" th:text="${c.name}"></a></li>
+                <li th:each="c:${list}"><a th:href="'activity?id='+${c.id}" th:text="${c.name}"></a></li>
+                <li><a href="news">新闻资讯</a></li>
                 <li>
                     <form action="">
                         <input type="text" placeholder="Search">
@@ -102,36 +114,18 @@
 
 <article class="container">
     <!--瀑布流开始-->
-    <div class="grid g1">
-        <div class="grid-item">
-            <a href="">
-                <img class="img-responsive" src="images/c1.jpg" alt="">
+    <div class="grid g1" id="g1">
+        <div class="grid-item" th:each="c:${cList}">
+            <p th:text="${c.title}"></p>
+            <a th:href="'detail?id='+${c.id}">
+                <img th:src="${c.url}" alt="">
             </a>
-        </div>
-        <div class="grid-item">
-            <a href="">
-                <img class="img-responsive" src="images/c2.jpg" alt="">
-            </a>
-        </div>
-        <div class="grid-item">
-            <a href="">
-                <img class="img-responsive" src="images/c3.jpg" alt="">
-            </a>
-        </div>
-        <div class="grid-item">
-            <a href="">
-                <img class="img-responsive" src="images/c4.jpg" alt="">
-            </a>
-        </div>
-        <div class="grid-item">
-            <a href="">
-                <img class="img-responsive" src="images/c5.jpg" alt="">
-            </a>
-        </div>
-        <div class="grid-item">
-            <a href="">
-                <img class="img-responsive" src="images/c6.jpg" alt="">
-            </a>
+            <span th:text="${c.countdown}" class="pull-left"></span>
+            <span class="pull-right">
+                <span>已有</span>
+                <span th:text="${c.viewCount}"></span>
+                <span>关注</span>
+            </span>
         </div>
     </div>
     <!--瀑布流结束-->

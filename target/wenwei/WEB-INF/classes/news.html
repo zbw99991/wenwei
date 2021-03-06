@@ -44,7 +44,8 @@
             <!--导航分类列表-->
             <ul class="nav navbar-nav">
                 <li><a href="home">网站首页</a></li>
-                <li th:each="c:${list}"><a th:href="${c.action}" th:text="${c.name}"></a></li>
+                <li th:each="c:${list}"><a th:href="'activity?id='+${c.id}" th:text="${c.name}"></a></li>
+                <li><a href="news">新闻资讯</a></li>
                 <li>
                     <form action="">
                         <input type="text" placeholder="Search">
